@@ -1,0 +1,68 @@
+/* Empty / initial states */
+.searchEmptyState,
+.searchInitialState {
+  text-align: center;
+  padding: 32px 24px;
+  color: var(--search-text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.searchEmptyState svg,
+.searchInitialState svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.35;
+  color: var(--search-text-muted);
+}
+
+.searchEmptyState p,
+.searchInitialState p {
+  margin: 0;
+}
+
+.emptyTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--search-text);
+}
+
+.emptySubtitle {
+  font-size: 0.875rem;
+  color: var(--search-text-muted);
+}
+
+/* Error state */
+.searchErrorState {
+  text-align: center;
+  padding: 32px 24px;
+  color: var(--search-text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.searchErrorState svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.6;
+  color: #EF4444;
+}
+
+.searchErrorState p {
+  margin: 0;
+}
+
+.errorTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--search-text);
+}
+
+.errorSubtitle {
+  font-size: 0.875rem;
+  color: var(--search-text-muted);
+}

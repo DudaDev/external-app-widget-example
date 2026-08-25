@@ -1,0 +1,119 @@
+/* Search bar */
+.searchBarWrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.searchInputGroup {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 14px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  color: var(--search-text-muted);
+}
+
+.searchIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 44px 12px 44px;
+  font-size: 1rem;
+  border: 1.5px solid var(--search-border);
+  border-radius: 10px;
+  background: var(--search-input-bg);
+  color: var(--search-text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.searchInput:focus {
+  border-color: var(--search-accent);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+  background: var(--search-bg);
+}
+
+.searchInput::placeholder {
+  color: var(--search-text-muted);
+}
+
+.searchClearBtn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  color: var(--search-text-muted);
+  border-radius: 50%;
+  transition: color 0.2s, background 0.2s;
+}
+
+.searchClearBtn:hover {
+  color: var(--search-text);
+  background: var(--search-border);
+}
+
+.searchClearBtn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.searchBtn {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--search-accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.searchBtn:hover:not(:disabled) {
+  background: var(--search-accent-hover);
+}
+
+.searchBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.searchBtn:focus-visible {
+  outline: 2px solid var(--search-accent);
+  outline-offset: 2px;
+}
+
+@container searchWidget (max-width: 767px) {
+  .searchBarWrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

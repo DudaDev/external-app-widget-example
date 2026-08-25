@@ -1,0 +1,264 @@
+.filtersContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: var(--search-input-bg);
+  border: 1px solid var(--search-border);
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+
+.filterControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Individual filter group ── */
+.filterGroup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1 1 140px;
+  max-width: 220px;
+  min-width: 0;
+}
+
+.filterLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--search-text-muted);
+  padding-left: 2px;
+}
+
+/* ── Single-select (native <select>) ── */
+.filterSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 36px;
+  min-width: 140px;
+  max-width: 100%;
+  padding: 0 32px 0 12px;
+  background: var(--search-bg);
+  border: 1px solid var(--search-border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--search-text);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.filterSelect:hover {
+  border-color: var(--search-accent);
+}
+
+.filterSelect:focus {
+  border-color: var(--search-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--search-accent) 15%, transparent);
+}
+
+.filterSelect.active {
+  border-color: var(--search-accent);
+  color: var(--search-accent);
+  font-weight: 600;
+}
+
+/* ── Multi-select (details/summary + checkboxes) ── */
+.multiWrapper {
+  position: relative;
+}
+
+.multiTrigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  min-width: 140px;
+  padding: 0 12px;
+  background: var(--search-bg);
+  border: 1px solid var(--search-border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--search-text);
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.15s;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+}
+
+.multiTrigger:hover {
+  border-color: var(--search-accent);
+}
+
+.multiWrapperOpen .multiTrigger {
+  border-color: var(--search-accent);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.multiTrigger.active {
+  border-color: var(--search-accent);
+  color: var(--search-accent);
+  font-weight: 600;
+}
+
+.multiBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: var(--search-accent);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.multiChevron {
+  margin-left: auto;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  color: var(--search-text-muted);
+  transition: transform 0.15s;
+}
+
+.multiWrapperOpen .multiChevron {
+  transform: rotate(180deg);
+}
+
+.multiPanel {
+  min-width: 180px;
+  max-height: 220px;
+  overflow-y: auto;
+  background: var(--search-bg);
+  border: 1px solid var(--search-accent);
+  border-top: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 6px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-size: 0.875rem;
+  color: var(--search-text);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.checkboxLabel:hover {
+  background: color-mix(in srgb, var(--search-accent) 8%, transparent);
+}
+
+.checkboxLabel input[type="checkbox"] {
+  accent-color: var(--search-accent);
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* ── Sort group ── */
+.sortGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-left: auto;
+  min-width: 0;
+}
+
+.sortControls {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.sortDirBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--search-bg);
+  border: 1px solid var(--search-border);
+  border-radius: 8px;
+  color: var(--search-text-muted);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.sortDirBtn:hover {
+  border-color: var(--search-accent);
+  color: var(--search-accent);
+}
+
+/* ── Clear button ── */
+.clearBtn {
+  height: 36px;
+  padding: 0 14px;
+  background: none;
+  border: 1px solid var(--search-border);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--search-text-muted);
+  cursor: pointer;
+  align-self: flex-end;
+  transition: border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.clearBtn:hover {
+  border-color: #EF4444;
+  color: #EF4444;
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+  .filtersContainer {
+    flex-direction: column;
+  }
+
+  .sortGroup {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .filterControls {
+    gap: 8px;
+  }
+
+  .filterGroup {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+
+  .filterSelect,
+  .multiTrigger {
+    min-width: 0;
+    width: 100%;
+  }
+}

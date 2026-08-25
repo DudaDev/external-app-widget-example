@@ -1,0 +1,65 @@
+.app {
+  max-width: 480px;
+  font-family: 'Roboto', helvetica, sans-serif;
+}
+
+.field {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #374151;
+}
+
+.field input,
+.field textarea {
+  font-size: 1rem;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.field textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.app button {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.app button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.app [role='alert'] {
+  color: #b91c1c;
+  font-size: 0.85rem;
+  margin: 0 0 12px;
+}
+
+.app [role='status'] {
+  font-size: 1rem;
+  color: #14532d;
+}

@@ -1,0 +1,117 @@
+/* Result card */
+.resultCard {
+  position: relative;
+  background: var(--search-card-bg);
+  border-radius: var(--search-card-radius);
+  box-shadow: var(--search-card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid var(--search-border);
+  cursor: pointer;
+}
+
+.resultCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+
+.resultImageWrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--search-input-bg);
+  flex-shrink: 0;
+}
+
+.resultImageWrap[data-has-image="false"] {
+  display: none;
+}
+
+.resultImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.resultCard:hover .resultImage {
+  transform: scale(1.04);
+}
+
+.resultBody {
+  padding: 16px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.resultCategory {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--search-accent);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.resultCategory:empty {
+  display: none;
+}
+
+.resultTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--search-text);
+  margin: 0 0 8px;
+  line-height: 1.35;
+}
+
+.resultDescription {
+  font-size: 0.875rem;
+  color: var(--search-text-muted);
+  margin: 0 0 12px;
+  line-height: 1.55;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.resultMeta {
+  font-size: 0.8rem;
+  color: var(--search-text-muted);
+  margin-bottom: 12px;
+}
+
+.resultMeta:empty {
+  display: none;
+}
+
+/* "Read more" link — ::after stretches to cover the whole card (stretched-link pattern) */
+.resultLink {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--search-accent);
+  align-self: flex-start;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.resultLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.resultLink:focus-visible {
+  outline: 2px solid var(--search-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}

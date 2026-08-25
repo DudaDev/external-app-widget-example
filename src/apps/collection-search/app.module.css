@@ -1,0 +1,131 @@
+/* CSS custom properties applied to the root container */
+.container {
+  --search-accent: #3B82F6;
+  --search-accent-hover: #2563EB;
+  --search-bg: #ffffff;
+  --search-border: #E5E7EB;
+  --search-input-bg: #F9FAFB;
+  --search-text: #111827;
+  --search-text-muted: #6B7280;
+  --search-card-bg: #ffffff;
+  --search-card-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --search-card-radius: 12px;
+  --search-result-columns: 3;
+  font-family: inherit;
+  white-space: normal;
+  width: 100%;
+  max-width: 100vw;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Widget container is also a CSS container so child components can use
+   @container queries based on the actual rendered width, not the viewport */
+.searchWidgetContainer {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  background: var(--search-bg);
+  border-radius: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+  container-type: inline-size;
+  container-name: searchWidget;
+}
+
+/* Warning banner (dmAPI timeout, filter load failure) */
+.searchWarning {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  background: #FEF3C7;
+  border: 1px solid #F59E0B;
+  border-radius: 6px;
+  color: #92400E;
+  font-size: 0.875rem;
+}
+
+/* Header */
+.searchHeader {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.searchTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--search-text);
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.searchSubtitle {
+  font-size: 1rem;
+  color: var(--search-text-muted);
+  margin: 0;
+}
+
+/* Meta/count */
+.searchMeta {
+  min-height: 24px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.searchResultsCount {
+  font-size: 0.875rem;
+  color: var(--search-text-muted);
+  font-weight: 500;
+}
+
+.searchLoading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--search-text-muted);
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--search-border);
+  border-top-color: var(--search-accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive viewport queries for the container's own padding */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .searchWidgetContainer {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .searchWidgetContainer {
+    padding: 20px 16px;
+  }
+}
+
+/* Container queries for inner elements fires on the actual rendered
+   width of .searchWidgetContainer, not the viewport */
+@container searchWidget (min-width: 768px) and (max-width: 1024px) {
+  .searchTitle {
+    font-size: 1.6rem;
+  }
+}
+
+@container searchWidget (max-width: 767px) {
+  .searchTitle {
+    font-size: 1.4rem;
+  }
+}

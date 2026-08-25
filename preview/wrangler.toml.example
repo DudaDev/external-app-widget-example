@@ -1,0 +1,53 @@
+# Copy this file to wrangler.toml (gitignored) and fill in your own values
+# before running `wrangler deploy`. wrangler.toml itself is never committed.
+# It names your real widget-hosting domain and your account's KV namespace
+# id, which shouldn't be baked into a shared template repo.
+name = "ext-app-widget-preview"
+main = "worker-src/index.ts"
+compatibility_date = "2026-08-21"
+
+routes = [
+  { pattern = "YOUR_WORKER_DOMAIN", custom_domain = true }
+]
+
+# Without this, the Worker stays reachable at its default *.workers.dev URL
+# too, alongside the custom domain above. routes doesn't disable it on its
+# own. The Cloudflare Access application below is only bound to the custom
+# domain, so a live workers.dev URL would sit completely outside it.
+workers_dev = false
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+# Without this, Cloudflare serves cached asset hits directly from the edge,
+# bypassing this worker's fetch handler entirely. That means rate limiting,
+# the custom security headers, and the dynamic routes below never run.
+run_worker_first = ["/bundles/*", "/", "/admin/react-mode", "/react-mode"]
+
+# hasValidAccessJwt() verifies Cf-Access-Jwt-Assertion against this Access
+# application's own JWKS. Both values are on the application's page in the
+# Zero Trust dashboard (Overview tab shows the Application Audience (AUD)
+# tag, your team domain is under Settings > Custom Pages). Create the
+# login-required Access application (see README) before deploying, then
+# fill these in. Left as placeholders, every request 403s, including
+# yours. Not secrets.
+[vars]
+ACCESS_TEAM_DOMAIN = "YOUR_TEAM_NAME.cloudflareaccess.com"
+ACCESS_AUD = "YOUR_ACCESS_APPLICATION_AUD_TAG"
+
+# namespace_id is an arbitrary label you pick, not a Cloudflare-assigned
+# resource id. Any unique string works.
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1002"
+simple = { limit = 60, period = 60 }
+
+# Stores each app's reactMode setting ("shared" | "standalone"). Read by
+# GET /react-mode?app=<name> (public, bypassed in Access), written from the
+# settings form on GET / (behind Access login on this hostname's catch-all
+# app). Create with `wrangler kv namespace create <name>` and paste the real
+# id below in your local (gitignored) wrangler.toml.
+[[kv_namespaces]]
+binding = "SETTINGS"
+id = "YOUR_KV_NAMESPACE_ID"

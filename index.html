@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Widget Dev Harness</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Oswald|Roboto:300&display=swap" rel="stylesheet">
+    <style>
+      body { margin: 0; padding: 20px; background: #f0f0f0; }
+    </style>
+  </head>
+  <body>
+    <!--
+      Dev harness simulates what DM does in production:
+        api.scripts.renderExternalApp(scriptSrc, element, props, { name: 'dmWidget' })
+        calls: dmWidget.init({ container: element, props })
+
+      APP update the props below to match your widget's DM Widget Builder corresponding properties
+    -->
+    <div id="root"></div>
+    <script type="module">
+      // APP change this to match whichever app you're previewing, alongside the defaults below
+      import { init } from '/src/entries/collection-search.tsx';
+
+      // APP update defaults to match your widget's DM Widget Builder properties
+
+      // Instant site example:
+      // const defaults = {
+      //   apiUrl:        '',    // set to your backend URL, e.g. 'http://localhost:3001'
+      //   embedToken:    '',    // set to match EMBED_TOKEN on your backend
+      //   enablePresets: true,  // show autofill dropdown with example data in dev
+      // };
+
+      // Spotify example:
+      // const defaults = { artistId: '6qqNVTkY8uBg9cP3Jd7DAH', apiBaseUrl: 'http://localhost:5001' };
+
+      // Placeholder example:
+      // const defaults = { resourceId: 'example-id' };
+
+      // Collection search example:
+      const defaults = {
+        searchTitle:       'Search',
+        searchSubtitle:    '',
+        searchPlaceholder: 'Search...',
+        searchButtonText:  'Search',
+        noResultsText:     'No results found',
+        noResultsSubtext:  'Try a different search term',
+        initialStateText:  'Enter a search term to get started',
+        readMoreText:      'View details',
+        collectionName:    '',         // set to your DM collection name, leave empty for demo mode
+        titleField:        '',
+        descField:         '',
+        imageField:        '',
+        linkField:         '',
+        categoryField:     '',
+        metaField:         '',
+        pageSize:          9,
+        resultColumns:     3,
+        dynamicPageBase:   '',
+        filterFields:      '',         // comma separated field names (autodetect if empty)
+        multiSelectFields: '',         // subset of filterFields to render as multi-select
+        sortFields:        '',         // comma separated sort fields (all schema fields if empty)
+      };
+
+      const q = new URLSearchParams(window.location.search);
+      const props = { ...defaults };
+      for (const [key, val] of q) {
+        if (key in props) props[key] = typeof props[key] === 'number' ? Number(val) : val;
+      }
+
+      init({
+        container: document.getElementById('root'),
+        props,
+      });
+    </script>
+  </body>
+</html>

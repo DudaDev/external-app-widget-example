@@ -1,0 +1,10 @@
+# Copy to worker/.dev.vars for local `wrangler dev` (gitignored, never commit real values)
+EXTERNAL_API_CLIENT_ID=your_spotify_client_id
+EXTERNAL_API_CLIENT_SECRET=your_spotify_client_secret
+ALLOWED_ORIGINS=localhost
+DUDA_API_USER=your_duda_api_user
+DUDA_API_PASSWORD=your_duda_api_password
+INSTANT_SITE_EMBED_TOKEN=your_instant_site_embed_token
+INSTANT_SITE_SESSION_SECRET=any_long_random_string
+FORM_BACKEND_URL=https://forms.example.com
+FORM_BACKEND_TOKEN=your_form_capture_backend_ingest_token

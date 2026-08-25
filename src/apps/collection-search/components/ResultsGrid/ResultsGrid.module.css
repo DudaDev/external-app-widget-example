@@ -1,0 +1,21 @@
+/* Results grid */
+.searchResultsGrid {
+  display: grid;
+  grid-template-columns: repeat(var(--search-result-columns), 1fr);
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@container searchWidget (min-width: 768px) and (max-width: 1024px) {
+  .searchResultsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@container searchWidget (max-width: 767px) {
+  .searchResultsGrid {
+    grid-template-columns: 1fr;
+  }
+}

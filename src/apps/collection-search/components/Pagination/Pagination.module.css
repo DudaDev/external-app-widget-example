@@ -1,0 +1,55 @@
+/* Pagination */
+.searchPagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--search-border);
+}
+
+.paginationBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1.5px solid var(--search-border);
+  border-radius: 8px;
+  background: var(--search-bg);
+  color: var(--search-text);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  font-family: inherit;
+}
+
+.paginationBtn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.paginationBtn:hover:not(:disabled) {
+  background: var(--search-accent);
+  border-color: var(--search-accent);
+  color: #fff;
+}
+
+.paginationBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.paginationBtn:focus-visible {
+  outline: 2px solid var(--search-accent);
+  outline-offset: 2px;
+}
+
+.paginationInfo {
+  font-size: 0.875rem;
+  color: var(--search-text-muted);
+  font-weight: 500;
+  min-width: 100px;
+  text-align: center;
+}

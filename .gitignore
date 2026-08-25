@@ -1,0 +1,56 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+/worker/coverage
+
+# production
+/dist
+
+# misc
+.DS_Store
+.env
+.env.local
+.eng
+.env.development.local
+.env.development
+.env.test.local
+.env.test
+.env.production.local
+.env.production
+/server/.env
+.dev.vars
+.dev.vars.*
+!worker/.dev.vars.example
+/worker/.wrangler
+/worker/node_modules
+/server/node_modules
+# Real domains + Cloudflare resource ids — .example versions are committed,
+# copy to wrangler.toml locally and fill in your own values.
+/worker/wrangler.toml
+/preview/wrangler.toml
+/preview/dist
+/preview/node_modules
+/preview/.wrangler
+# Rebuilt by `npm run build:preview-bundles`, same reasoning as /preview/dist.
+/preview/public/bundles
+
+*.swp
+*.swo
+
+# Local developer scripts (e.g. tunneling, personal workflows)
+*.local.sh
+# Real-value copies of the widget-builder templates — the tracked .js
+# versions use YOUR_WORKER_DOMAIN/YOUR_BACKEND_DOMAIN placeholders so no
+# real route ever lands in a committed file.
+*-widget-builder.local.js
+
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
