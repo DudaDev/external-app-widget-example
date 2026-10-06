@@ -167,7 +167,7 @@ props: { collectionName: 'your-collection-name' }
 
 ## Instant Site App
 
-Creates a new Duda site using AI generation or a template, then provisions a user account and grants editor access. The deployed preview (`widgets.susurrous.dev/instant-site`) is wired to the sibling `duda-instant-site-demo-updated` repo's server as its backend, that project's own README documents itself as the intended pairing for this widget, and `preview/entries/instant-site.tsx` records the exact live `apiUrl`/`embedToken`. `worker/src/routes/instant-site.ts` is a separate, independent implementation of the same `/api/*` routes (see [`worker/README.md`](worker/README.md)) usable as a backend for this app, but not what the live deployment currently points at.
+Creates a new Duda site using AI generation or a template, then provisions a user account and grants editor access. The preview is wired to the sibling `duda-instant-site-demo-updated` repo's server as its backend, that project's own README documents itself as the intended pairing for this widget, and `preview/entries/instant-site.tsx` records the exact live `apiUrl`/`embedToken`. `worker/src/routes/instant-site.ts` is a separate, independent implementation of the same `/api/*` routes (see [`worker/README.md`](worker/README.md)) usable as a backend for this app, but not what the live deployment currently points at.
 
 ### Props
 
